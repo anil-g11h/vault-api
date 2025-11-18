@@ -11,6 +11,12 @@ module.exports = {
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest'
     },
+    transformIgnorePatterns: [
+        'node_modules/(?!(axios)/)'
+    ],
+    moduleNameMapper: {
+        '^axios$': 'axios/dist/node/axios.cjs'
+    },
     moduleDirectories: ['node_modules', 'dist', 'lib'],
     moduleFileExtensions: ['ts', 'js', 'json'],
     collectCoverage: true,

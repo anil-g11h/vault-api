@@ -13,6 +13,12 @@ module.exports = {
                 sourceType: 'module',
                 tsconfigRootDir: __dirname,
             },
+        },
+        {
+            files: ['tests/**/*.ts'],
+            rules: {
+                'import/namespace': 'off'
+            }
         }
     ],
     plugins: ['@typescript-eslint', 'filenames', 'jest'],
@@ -22,6 +28,10 @@ module.exports = {
             '@typescript-eslint/parser': ['.ts']
         },
         'import/resolver': {
+            typescript: {
+                alwaysTryTypes: true,
+                project: './tsconfig.eslint.json'
+            },
             node: {
                 extensions: ['.js', '.ts']
             }

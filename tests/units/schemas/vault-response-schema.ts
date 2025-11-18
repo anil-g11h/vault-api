@@ -7,7 +7,7 @@ export const vaultCmdResponseSchema = Joi.object({
     lease_duration: Joi.number().required(),
     data: Joi.object().required(),
     warnings: Joi.object().allow(null).required(),
-});
+}).unknown(true);
 
 export const vaultResponseSchema = vaultCmdResponseSchema.keys({
     wrap_info: Joi.object().allow(null).required(),

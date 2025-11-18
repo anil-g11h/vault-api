@@ -10,17 +10,17 @@ export const vaultKv2CmdResponseSchema = vaultCmdResponseSchema.keys({
             destroyed: Joi.boolean().required(),
             version: Joi.number().required(),
             custom_metadata: Joi.object().required().allow(null),
-        }).required(),
-    }).required(),
-});
+        }).unknown(true).required(),
+    }).unknown(true).required(),
+}).unknown(true);
 
 export const KVv2ConfigSchema = vaultResponseSchema.keys({
     data: Joi.object({
         cas_required: Joi.boolean(),
         delete_version_after: Joi.string(),
         max_versions: Joi.number()
-    })
-});
+    }).unknown(true)
+}).unknown(true);
 
 export const KVv2ReadSchema = vaultResponseSchema.keys({
     metadata: Joi.object({
@@ -29,8 +29,8 @@ export const KVv2ReadSchema = vaultResponseSchema.keys({
         destroyed: Joi.boolean().required(),
         version: Joi.number().required(),
         custom_metadata: Joi.object().required().allow(null),
-    })
-});
+    }).unknown(true)
+}).unknown(true);
 
 export const KVv2WriteSchema = vaultResponseSchema.keys({
     data: Joi.object({
@@ -39,15 +39,15 @@ export const KVv2WriteSchema = vaultResponseSchema.keys({
         destroyed: Joi.boolean().required(),
         version: Joi.number().required(),
         custom_metadata: Joi.object().required().allow(null),
-    }),
+    }).unknown(true),
     statusCode: Joi.number().valid(200).required()
-});
+}).unknown(true);
 
 export const KVv2ListSchema = vaultResponseSchema.keys({
     data: Joi.object({
         keys: Joi.array().required(),
-    }),
-});
+    }).unknown(true),
+}).unknown(true);
 
 export const KVv2ReadMetadataCmdSchema = vaultCmdResponseSchema.keys({
     data: Joi.object({
@@ -62,10 +62,10 @@ export const KVv2ReadMetadataCmdSchema = vaultCmdResponseSchema.keys({
             created_time: Joi.string().isoDate().required(),
             deletion_time: Joi.string().isoDate().allow('').required(),
             destroyed: Joi.boolean().required(),
-        }).required(),
+        }).unknown(true).required(),
         custom_metadata: Joi.object().required().allow(null),
-    }),
-});
+    }).unknown(true),
+}).unknown(true);
 
 export const KVv2ReadMetadataSchema = vaultResponseSchema.keys({
     data: Joi.object({
@@ -80,7 +80,7 @@ export const KVv2ReadMetadataSchema = vaultResponseSchema.keys({
             created_time: Joi.string().isoDate().required(),
             deletion_time: Joi.string().isoDate().allow('').required(),
             destroyed: Joi.boolean().required(),
-        }).required(),
+        }).unknown(true).required(),
         custom_metadata: Joi.object().required().allow(null),
-    }),
-});
+    }).unknown(true),
+}).unknown(true);
